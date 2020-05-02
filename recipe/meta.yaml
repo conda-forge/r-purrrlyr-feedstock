@@ -1,4 +1,4 @@
-{% set version = '0.0.5' %}
+{% set version = "0.0.6" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/purrrlyr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/purrrlyr/purrrlyr_{{ version }}.tar.gz
-  sha256: d8e780cd820fe28612ba44b0e5b2c20a8c208db91dc11f53bb3980769caf8a65
+  sha256: f81a572ee5d18fcd533dbcc2f1cd897da51c2099de5e7d1e653af151fffd356a
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -25,11 +25,11 @@ requirements:
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}make
-    - {{posix}}sed               # [win]
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
     - r-bh
@@ -39,7 +39,7 @@ requirements:
     - r-purrr >=0.2.2
   run:
     - r-base
-    - {{native}}gcc-libs         # [win]
+    - {{ native }}gcc-libs         # [win]
     - r-bh
     - r-rcpp
     - r-dplyr >=0.8.0
@@ -54,10 +54,9 @@ test:
 about:
   home: https://github.com/hadley/purrrlyr
   license: GPL-3
-  summary: Some functions at the intersection of 'dplyr' and 'purrr' that  formerly lived in
-    'purrr'.
+  summary: Some functions at the intersection of 'dplyr' and 'purrr' that  formerly lived in 'purrr'.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
