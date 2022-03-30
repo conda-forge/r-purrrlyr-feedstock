@@ -1,4 +1,4 @@
-{% set version = "0.0.7" %}
+{% set version = "0.0.8" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/purrrlyr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/purrrlyr/purrrlyr_{{ version }}.tar.gz
-  sha256: 15f411716cf75a5763ee90ed31e27b888795dafc44ec5ec8931b0c0c7e17870c
+  sha256: 085a8f691eb1ee24fd3a941c2042a80c480064bf2258263b0b911fa066438062
 
 build:
   merge_build_host: true  # [win]
