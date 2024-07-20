@@ -1,6 +1,5 @@
 {% set version = "0.0.8" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-purrrlyr
@@ -13,8 +12,7 @@ source:
   sha256: 085a8f691eb1ee24fd3a941c2042a80c480064bf2258263b0b911fa066438062
 
 build:
-  merge_build_host: true  # [win]
-  number: 2
+  number: 3
   rpaths:
     - lib/R/lib/
     - lib/
@@ -22,7 +20,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -39,7 +39,6 @@ requirements:
     - r-purrr >=0.2.2
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-rcpp
     - r-dplyr >=0.8.0
     - r-magrittr >=1.5
